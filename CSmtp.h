@@ -108,6 +108,11 @@ private:
 class CSmtp  
 {
 public:
+	enum CSmtpContentType
+	{
+		TEXTPLAIN,
+		TEXTHTML,
+	};
 	CSmtp();
 	virtual ~CSmtp();
 	void AddRecipient(const char *email, const char *name=NULL);
@@ -146,8 +151,6 @@ public:
 	void SetXPriority(CSmptXPriority);
 	void SetSMTPServer(const char* server,const unsigned short port=0);
 
-	bool isHtmlBody;
-
 private:	
 	std::string m_sLocalHostName;
 	std::string m_sMailFrom;
@@ -180,7 +183,7 @@ private:
  
 	void ReceiveData();
 	void SendData();
-	void FormatHeader(char*);
+	void FormatHeader(char*, CSmtpContentType);
 	int SmtpXYZdigits();
 	SOCKET ConnectRemoteServer(const char* server, const unsigned short port=0);
 	

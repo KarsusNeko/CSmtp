@@ -836,7 +836,7 @@ int CSmtp::SmtpXYZdigits()
 // AUTHOR/DATE: JP 2010-01-28
 //							JP 2010-07-07
 ////////////////////////////////////////////////////////////////////////////////
-void CSmtp::FormatHeader(char* header)
+void CSmtp::FormatHeader(char* header, CSmtpContentType content_type = TEXTPLAIN)
 {
 	char month[][4] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	size_t i;
@@ -979,7 +979,7 @@ void CSmtp::FormatHeader(char* header)
 	
 	// MIME-Version: <SP> 1.0 <CRLF>
 	strcat(header,"MIME-Version: 1.0\r\n");
-	if(isHtmlBody)
+	if (content_type == TEXTHTML)
 	{
 		if(!Attachments.size())
 		{// no attachments
@@ -1014,7 +1014,7 @@ void CSmtp::FormatHeader(char* header)
 			strcat(SendBuf,"\r\n");
 		}
 	}
-	else
+	else if (content_type == TEXTPLAIN)
 	{
 		if(!Attachments.size())
 		{ // no attachments
