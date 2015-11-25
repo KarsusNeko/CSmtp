@@ -5,6 +5,6 @@ This repo's original edition is published on codeproject. To jump to original ar
 The original project is licensed by [COPL](http://www.codeproject.com/info/cpol10.aspx). You can find the license in this repo too.
 ## About this repo
 v1.1
-> HTML Content Support
+> HTML Content Support<br>
 v1.0
 > Add a public variable 'isHtmlBody' to send a html format mail
